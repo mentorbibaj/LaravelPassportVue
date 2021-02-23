@@ -16,23 +16,25 @@ class AuthController extends Controller
         $link = 'http://localhost:8081/';
 
         $http = new \GuzzleHttp\Client;
+
         try {
-            $response = $http->post(config('services.passport.login_endpoint'), [//$link.'oauth/token'
-                'form_params'=>[
+            $response = $http->post(config('services.passport.login_endpoint'), [
+                'form_params' => [
                     'grant_type' => 'password',
-                    'client_id' => config('services.passport.client_id'),//2
-                    'client_secret' => config('services.passport.client_secret'),//'Kw27CxacbgbDVrgKGO0FalB2aCTiJueyJ0hk3eD1'
-                    'username' => $request->username,//'klehner@example.net',//
-                    'password' =>  $request->password//'password'//
+                    'client_id' => config('services.passport.client_id'),
+                    'client_secret' => config('services.passport.client_secret'),
+                    'username' => $request->username,
+                    'password' => $request->password,
                 ]
             ]);
             return $response->getBody();
-        }catch(\GuzzleHttp\Exception\BadResponseException $e){
-            if($e->getCode()==400){
-                return response()->json('Invalid request. Please enter a username or password. ', $e->getCode());
-            }else if($e->getCode()==401){
-                return response()->json('Your credentials are incorrect. Please try again', $e->getCode()); 
+        } catch (\GuzzleHttp\Exception\BadResponseException $e) {
+            if ($e->getCode() === 400) {
+                return response()->json('Invalid Request. Please enter a username or a password.', $e->getCode());
+            } else if ($e->getCode() === 401) {
+                return response()->json('Your credentials are incorrect. Please try again', $e->getCode());
             }
+
             return response()->json('Something went wrong on the server.', $e->getCode());
         }
         
