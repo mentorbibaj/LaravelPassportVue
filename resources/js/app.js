@@ -3,11 +3,20 @@ import VueRouter from 'vue-router'
 import routes from './routes'
 import Master from './components/components/layouts/Master'
 import { store } from './components/store/store'
+import CxltToastr from 'cxlt-vue2-toastr'
+
+const toastrConfigs = {
+    position: 'bottom right',
+    showDuration: 2000,
+    timeOut: 5000,
+    progressBar: true,
+}
 
 window.eventBus = new Vue();
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)
+Vue.use(CxltToastr, toastrConfigs)
 
 const router = new VueRouter({
     routes,
