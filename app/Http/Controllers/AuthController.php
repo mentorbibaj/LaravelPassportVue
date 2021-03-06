@@ -12,8 +12,6 @@ class AuthController extends Controller
 {
     //
     public function login(Request $request){
-        
-        $link = 'http://localhost:8081/';
 
         $http = new \GuzzleHttp\Client;
 

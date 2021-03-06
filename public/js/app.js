@@ -2593,7 +2593,7 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__.default.Store({
   },
   mutations: {
     addTodo: function addTodo(state, todo) {
-      state.todos.push({
+      state.todos.unshift({
         id: todo.id,
         title: todo.title,
         completed: false,

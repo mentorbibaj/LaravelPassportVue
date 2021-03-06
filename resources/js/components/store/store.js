@@ -37,7 +37,7 @@ export const store = new Vuex.Store({
     },
     mutations: {
         addTodo(state, todo) {
-            state.todos.push({
+            state.todos.unshift({
                 id: todo.id,
                 title: todo.title,
                 completed: false,
@@ -133,7 +133,6 @@ export const store = new Vuex.Store({
             }
         },
         retrieveToken(context, credentials) {
-
             return new Promise((resolve, reject) => {
                 axios.post('/login', {
                         username: credentials.username,
