@@ -29,6 +29,7 @@ export default {
 <style lang="scss">
   @import url("https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css");
   @import url('cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr.css');
+  @import url('@kouts/vue-modal/dist/vue-modal.css');
 
   * {
     box-sizing: border-box;

@@ -2,7 +2,7 @@
   <div class="todo-item">
     <div class="todo-item-left">
         <input type="checkbox" v-model="completed" @change="doneEdit">
-        <div v-if="!editing" @dblclick="editTodo" class="todo-item-label" :class="{ completed : completed }">{{ title }}</div>
+        <div v-if="!editing" @dblclick="editTodo" class="todo-item-label" :class="{ completed : completed }">{{title}} {{ encrypted }}</div>
         <input v-else class="todo-item-edit" type="text" v-model="title" @blur="doneEdit" @keyup.enter="doneEdit" @keyup.esc="cancelEdit" v-focus>
     </div> <!-- end todo-item-left -->
     <div>
@@ -34,6 +34,7 @@ export default {
       'completed': this.todo.completed,
       'editing': this.todo.editing,
       'beforeEditCache': '',
+      'encrypted': this.todo.encrypted,
     }
   },
   created() {

@@ -20,6 +20,7 @@ class CreateTodosTable extends Migration
                 ->onDelete('cascade');
             $table->text('title');
             $table->boolean('completed')->default(false);
+            $table->boolean('encrypted')->default(false);
             $table->timestamps();
         });
     }

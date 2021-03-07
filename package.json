@@ -24,8 +24,13 @@
         "vue-loader": "^15.9.5",
         "vue-template-compiler": "^2.6.10"
     },
+    "browser": {
+        "crypto": false
+    },
     "dependencies": {
+        "@kouts/vue-modal": "^2.0.1",
         "cxlt-vue2-toastr": "^1.1.1",
+        "vue-cryptojs": "^2.1.5",
         "vue-router": "^3.5.1",
         "vuex": "^3.6.2"
     }

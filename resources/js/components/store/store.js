@@ -1,8 +1,14 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import VueCryptojs from 'vue-cryptojs'
+//++
+import VueModal from '@kouts/vue-modal'; //should be used in the future
+
+//--
 
 Vue.use(Vuex)
+Vue.use(VueCryptojs)
 axios.defaults.baseURL = 'http://127.0.0.1:8000/api'
 
 export const store = new Vuex.Store({
@@ -165,8 +171,9 @@ export const store = new Vuex.Store({
                 })
         },
         addTodo(context, todo) {
+            var mytodo = todo.encryptTodo === true ? Vue.CryptoJS.AES.encrypt(todo.title, todo.todoPassword).toString() : todo.title
             axios.post('/todos', {
-                    title: todo.title,
+                    title: mytodo,
                     completed: false,
                 })
                 .then(response => {
